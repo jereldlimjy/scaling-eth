@@ -33,7 +33,8 @@ export async function POST(
 
     return NextResponse.json({
         attribution: false,
-        chainId: "eip155:11155420", // Optimism Sepolia
+        chainId: "eip155:100", // Gnosis Chain
+        // chainId: "eip155:11155420", // Optimism Sepolia
         // chainId: "eip155:8453", // Base Mainnet
         method: "eth_sendTransaction",
         params: {
