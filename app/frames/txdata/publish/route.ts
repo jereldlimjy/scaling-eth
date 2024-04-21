@@ -39,6 +39,7 @@ export async function POST(
     // chainId: "eip155:8453", // Base Mainnet
 
     return NextResponse.json({
+        attribution: false,
         chainId: "eip155:421614", // Arb Sepolia
         method: "eth_sendTransaction",
         params: {
