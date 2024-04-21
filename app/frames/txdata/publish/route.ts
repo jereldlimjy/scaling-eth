@@ -5,7 +5,7 @@ import { Abi, encodeFunctionData } from "viem";
 import heartToFindAbi from "../../../assets/heartToFindAbi.json";
 
 const HEART_TO_FIND_CONTRACT_ADDRESS =
-    "0x5B27DE5CCD30Acb7964c93C8337070952a214166";
+    "0xdCB73D72E0513C713A2812C75EdE60CFe307E73b";
 // "0x0d319abc6a3f6a5dEfb8a41F0359267e28DFE5f2"; // Gnosis Chain
 
 export async function POST(
@@ -18,6 +18,8 @@ export async function POST(
     if (!frameMessage) {
         throw new Error("No frame message");
     }
+
+    console;
 
     const stateObj = JSON.parse(frameMessage.state || "");
     const score = stateObj.score;
