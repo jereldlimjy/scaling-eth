@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ethers } from "ethers";
 import heartToFindAbi from "../../assets/heartToFindAbi.json";
+import { unstable_noStore as noStore } from "next/cache";
 
 const HEART_TO_FIND_CONTRACT_ADDRESS =
     "0xdCB73D72E0513C713A2812C75EdE60CFe307E73b";
@@ -10,6 +11,7 @@ export async function GET(
     req: NextRequest,
     res: NextResponse<{ message: string }>
 ) {
+    noStore();
     const provider = new ethers.JsonRpcProvider(
         process.env.SEPOLIA_RPC_ENDPOINT ?? ""
     );

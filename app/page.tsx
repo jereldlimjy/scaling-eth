@@ -5,7 +5,6 @@ import { vercelURL } from "./utils";
 import { HeartSvg } from "./components/HeartSvgWeb";
 import HeartBitDataWrapper from "./components/HeartBitDataWrapper";
 import { pressStart2P } from "./fonts";
-import { unstable_noStore as noStore } from "next/cache";
 
 export async function generateMetadata(): Promise<Metadata> {
     return {
@@ -45,7 +44,6 @@ const getLeaderboard = async () => {
 
 // This is a react server component only
 export default async function Home({ searchParams }: NextServerPageProps) {
-    noStore();
     const leaderboard = await getLeaderboard();
 
     return (
