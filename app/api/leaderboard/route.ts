@@ -4,7 +4,8 @@ import heartToFindAbi from "../../assets/heartToFindAbi.json";
 import { unstable_noStore as noStore } from "next/cache";
 
 const HEART_TO_FIND_CONTRACT_ADDRESS =
-    "0x1D774b8560Fb4A7b9130B99c503D79D72ccb2953"; // Arb Sepolia
+    "0x3fE5F489a87A4523956D1770a1571FaFB9915412"; // Base Mainnet
+("0x1D774b8560Fb4A7b9130B99c503D79D72ccb2953"); // Arb Sepolia
 // "0xdCB73D72E0513C713A2812C75EdE60CFe307E73b"; // Sepolia
 // "0x0d319abc6a3f6a5dEfb8a41F0359267e28DFE5f2"; // Gnosis Chain
 
@@ -14,7 +15,7 @@ export async function GET(
 ) {
     noStore();
     const provider = new ethers.JsonRpcProvider(
-        process.env.ARB_SEPOLIA_RPC_ENDPOINT ?? ""
+        process.env.BASE_RPC_ENDPOINT ?? ""
     );
 
     const heartToFindContract = new ethers.Contract(
