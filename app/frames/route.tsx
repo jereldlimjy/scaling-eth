@@ -1,32 +1,53 @@
 /* eslint-disable react/jsx-key */
 import { Button } from "frames.js/next";
 import { frames } from "./frames";
+import { pressStart2PFont } from "../fonts";
+import { HeartSvg } from "../components/HeartSvg";
+import { PuzzleBackground } from "../components/PuzzleBackground";
 
-const frameHandler = frames(async (ctx) => {
-  const counter = ctx.message ? ctx.searchParams.op === "+" ? ctx.state.counter + 1 : ctx.state.counter - 1 : ctx.state.counter
+const handleRequest = frames(async (ctx: any) => {
+    return {
+        image: (
+            <div tw="w-full h-full flex justify-center items-center bg-yellow-300 relative">
+                <div tw="flex absolute w-full h-full">
+                    <PuzzleBackground />
+                </div>
+                <div tw="flex absolute top-30 left-85">
+                    <HeartSvg />
+                </div>
+                <div tw="flex bg-black justify-center items-center pb-2 pt-8 px-3">
+                    <span tw="font-pressStart2P text-white text-5xl">
+                        HeartToFind
+                    </span>
+                </div>
+            </div>
+        ),
+        buttons: [
+            <Button action="post" target="/game">
+                Start Game 🎮
+            </Button>,
+            <Button action="post" target="/info">
+                Game Info ❓
+            </Button>,
+            <Button
+                action="link"
+                target={
+                    // TODO: Change this to the correct URL
+                    process.env.NODE_ENV === "production"
+                        ? "https://sg-searchers.vercel.app"
+                        : process.env.NODE_ENV === "development"
+                        ? "https://sg-searchers-dev.vercel.app"
+                        : "http://localhost:3000"
+                }
+            >
+                View Leaderboard
+            </Button>,
+        ],
+        imageOptions: {
+            fonts: [pressStart2PFont],
+        },
+    };
+});
 
-  return {
-    image: <div tw="flex flex-col">
-      <div tw="flex">frames.js starter</div>
-      {ctx.message?.inputText && <div tw="flex">
-      {`Input: ${ctx.message.inputText}`}
-      </div>}
-      <div tw="flex">Counter {counter}</div></div>,
-    textInput: "Say something",
-    buttons: [
-      <Button action="post" target={{pathname: "/", query: {op: "+"}}}>
-        Increment
-      </Button>,
-      <Button action="post" target={{pathname: "/", query: {op: "-"}}}>
-        Decrement
-      </Button >,
-      <Button action="link" target={`https://www.google.com`}>
-        External
-      </Button>
-    ],
-    state: { counter: counter}
-  }
-})
-
-export const GET = frameHandler;
-export const POST = frameHandler;
+export const GET = handleRequest;
+export const POST = handleRequest;
