@@ -20,8 +20,6 @@ export async function POST(
         throw new Error("No frame message");
     }
 
-    console;
-
     const stateObj = JSON.parse(frameMessage.state || "");
     const score = stateObj.score;
     const fid = frameMessage.requesterFid;
