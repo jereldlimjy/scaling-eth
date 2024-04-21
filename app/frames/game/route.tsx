@@ -6,9 +6,14 @@ import { HeartSvg } from "../../components/HeartSvg";
 
 const getPuzzle = async () => {
     try {
-        const response = await fetch("http://localhost:3000/api/puzzle", {
-            cache: "no-cache",
-        });
+        const response = await fetch(
+            process.env.NODE_ENV === "production"
+                ? "https://heart-to-find.vercel.app/api/puzzle"
+                : process.env.NODE_ENV === "development"
+                ? "https://heart-to-find-dev.vercel.app/api/puzzle"
+                : "http://localhost:3000/api/puzzle",
+            { cache: "no-cache" }
+        );
         if (!response.ok) {
             throw new Error("Network response was not ok");
         }

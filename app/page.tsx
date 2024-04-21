@@ -21,11 +21,10 @@ export async function generateMetadata(): Promise<Metadata> {
 const getLeaderboard = async () => {
     try {
         const response = await fetch(
-            // TODO: Change this to the correct URL
             process.env.NODE_ENV === "production"
-                ? "https://sg-searchers.vercel.app/api/leaderboard"
+                ? "https://heart-to-find.vercel.app/api/leaderboard"
                 : process.env.NODE_ENV === "development"
-                ? "https://sg-searchers-dev.vercel.app/api/leaderboard"
+                ? "https://heart-to-find.vercel.app/api/leaderboard"
                 : "http://localhost:3000/api/leaderboard",
             { cache: "no-store" }
         );

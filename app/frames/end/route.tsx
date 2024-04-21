@@ -31,8 +31,11 @@ export const POST = frames(async (ctx: any) => {
                 <Button
                     action="link"
                     target={
-                        // TODO: Change this to the correct URL
-                        "http://localhost:3000"
+                        process.env.NODE_ENV === "production"
+                            ? "https://heart-to-find.vercel.app/api/leaderboard"
+                            : process.env.NODE_ENV === "development"
+                            ? "https://heart-to-find.vercel.app/api/leaderboard"
+                            : "http://localhost:3000/api/leaderboard"
                     }
                 >
                     View Leaderboard

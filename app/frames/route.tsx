@@ -32,11 +32,10 @@ const handleRequest = frames(async (ctx: any) => {
             <Button
                 action="link"
                 target={
-                    // TODO: Change this to the correct URL
                     process.env.NODE_ENV === "production"
-                        ? "https://sg-searchers.vercel.app"
+                        ? "https://heart-to-find.vercel.app"
                         : process.env.NODE_ENV === "development"
-                        ? "https://sg-searchers-dev.vercel.app"
+                        ? "https://heart-to-find.vercel.app"
                         : "http://localhost:3000"
                 }
             >
