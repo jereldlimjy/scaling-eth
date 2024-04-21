@@ -66,17 +66,17 @@ export default async function Home({ searchParams }: NextServerPageProps) {
 
                 <div className="mt-5 bg-white text-black text-lg shadow-lg rounded-lg overflow-hidden">
                     <div
-                        className={`bg-gray-200 px-4 py-2 grid grid-cols-3 text-center ${pressStart2P.className}`}
+                        className={`bg-gray-200 px-8 py-2 grid grid-cols-4 text-center ${pressStart2P.className}`}
                     >
                         <span>Rank</span>
-                        <span>User FID</span>
+                        <span>FID</span>
                         <span>Username</span>
                         <span>Score</span>
                     </div>
                     {leaderboard.map((obj: any, index: number) => (
                         <div
                             key={index}
-                            className={`px-4 py-2 grid grid-cols-3 text-center ${
+                            className={`px-8 py-2 grid grid-cols-4 text-center ${
                                 pressStart2P.className
                             } ${index % 2 === 0 ? "bg-gray-100" : ""}`}
                         >
