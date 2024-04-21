@@ -19,7 +19,7 @@ export const POST = frames(async (ctx: any) => {
 
     const ws = JSON.parse(state);
     const coreSDK = new HeartBitCore({
-        chain: "0xaa36a7",
+        chain: "0x64",
     });
 
     // Calculate from latest time

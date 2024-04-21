@@ -5,7 +5,7 @@ import HeartBitData from "./HeartBitData";
 
 const HeartBitDataWrapper = () => {
     const coreOptions = {
-        chain: "0xaa36a7" as SupportedChain,
+        chain: "0x64" as SupportedChain,
     };
 
     return (

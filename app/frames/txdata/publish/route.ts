@@ -2,10 +2,10 @@ import { TransactionTargetResponse } from "frames.js";
 import { getFrameMessage } from "frames.js/next/server";
 import { NextRequest, NextResponse } from "next/server";
 import { Abi, encodeFunctionData } from "viem";
-import lionCitySearchAbi from "../../../assets/lionCitySearchAbi.json";
+import heartToFindAbi from "../../../assets/heartToFindAbi.json";
 
-const LION_CITY_SEARCH_CONTRACT_ADDRESS =
-    "0x6144E026C9FD451876676a5925EeD220dbC240e0";
+const HEART_TO_FIND_CONTRACT_ADDRESS =
+    "0x0d319abc6a3f6a5dEfb8a41F0359267e28DFE5f2";
 
 export async function POST(
     req: NextRequest
@@ -21,12 +21,14 @@ export async function POST(
     const stateObj = JSON.parse(frameMessage.state || "");
     const score = stateObj.score;
     const fid = frameMessage.requesterFid;
+    const username = (frameMessage.requesterUserData as any).username;
+    const userAddress = frameMessage.requesterVerifiedAddresses[0];
 
     // update score
     const calldata = encodeFunctionData({
-        abi: lionCitySearchAbi,
+        abi: heartToFindAbi,
         functionName: "setScore",
-        args: [fid, score],
+        args: [fid, score, username, userAddress],
     });
 
     return NextResponse.json({
@@ -35,8 +37,8 @@ export async function POST(
         // chainId: "eip155:8453", // Base Mainnet
         method: "eth_sendTransaction",
         params: {
-            abi: lionCitySearchAbi as Abi,
-            to: LION_CITY_SEARCH_CONTRACT_ADDRESS,
+            abi: heartToFindAbi as Abi,
+            to: HEART_TO_FIND_CONTRACT_ADDRESS,
             data: calldata,
             value: "0",
         },
