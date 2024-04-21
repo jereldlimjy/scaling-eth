@@ -40,7 +40,8 @@ export async function POST(
 
     return NextResponse.json({
         attribution: false,
-        chainId: "eip155:421614", // Arb Sepolia
+        chainId: "eip155:84532", // Base Sepolia
+        // chainId: "eip155:421614", // Arb Sepolia
         method: "eth_sendTransaction",
         params: {
             abi: heartToFindAbi as Abi,
