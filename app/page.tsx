@@ -23,8 +23,6 @@ const getLeaderboard = async () => {
         const response = await fetch(
             process.env.NODE_ENV === "production"
                 ? "https://heart-to-find.vercel.app/api/leaderboard"
-                : process.env.NODE_ENV === "development"
-                ? "https://heart-to-find.vercel.app/api/leaderboard"
                 : "http://localhost:3000/api/leaderboard",
             { cache: "no-store" }
         );
@@ -42,6 +40,7 @@ const getLeaderboard = async () => {
 // This is a react server component only
 export default async function Home({ searchParams }: NextServerPageProps) {
     const leaderboard = await getLeaderboard();
+    console.log(leaderboard);
 
     return (
         <div className="flex flex-col h-full w-full items-center bg-yellow-300">
@@ -71,6 +70,7 @@ export default async function Home({ searchParams }: NextServerPageProps) {
                     >
                         <span>Rank</span>
                         <span>User FID</span>
+                        <span>Username</span>
                         <span>Score</span>
                     </div>
                     {leaderboard.map((obj: any, index: number) => (
@@ -82,6 +82,7 @@ export default async function Home({ searchParams }: NextServerPageProps) {
                         >
                             <span>{index + 1}</span>
                             <span>{obj.fid}</span>
+                            <span>{obj.username}</span>
                             <span>{obj.score}</span>
                         </div>
                     ))}
