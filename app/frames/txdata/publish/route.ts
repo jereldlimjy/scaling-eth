@@ -5,7 +5,8 @@ import { Abi, encodeFunctionData } from "viem";
 import heartToFindAbi from "../../../assets/heartToFindAbi.json";
 
 const HEART_TO_FIND_CONTRACT_ADDRESS =
-    "0x0d319abc6a3f6a5dEfb8a41F0359267e28DFE5f2";
+    "0x5B27DE5CCD30Acb7964c93C8337070952a214166";
+// "0x0d319abc6a3f6a5dEfb8a41F0359267e28DFE5f2"; // Gnosis Chain
 
 export async function POST(
     req: NextRequest
@@ -33,7 +34,8 @@ export async function POST(
 
     return NextResponse.json({
         attribution: false,
-        chainId: "eip155:100", // Gnosis Chain
+        chainId: "eip155:11155111", // Sepolia
+        // chainId: "eip155:100", // Gnosis Chain
         // chainId: "eip155:11155420", // Optimism Sepolia
         // chainId: "eip155:8453", // Base Mainnet
         method: "eth_sendTransaction",
