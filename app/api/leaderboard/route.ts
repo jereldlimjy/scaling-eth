@@ -13,18 +13,18 @@ export async function GET(
         process.env.GNOSIS_RPC_ENDPOINT ?? ""
     );
 
-    const lionCitySearchContract = new ethers.Contract(
+    const heartToFindContract = new ethers.Contract(
         HEART_TO_FIND_CONTRACT_ADDRESS,
         heartToFindAbi,
         provider
     ) as any;
 
-    const fids = await lionCitySearchContract.getfids();
+    const fids = await heartToFindContract.getFids();
 
     let scores = [];
 
     for (const fid of fids) {
-        const user = await lionCitySearchContract.getUser(fid);
+        const user = await heartToFindContract.getUser(fid);
         scores.push({
             fid: Number(fid),
             score: Number(user.score),
