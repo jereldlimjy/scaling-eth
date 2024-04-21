@@ -24,7 +24,12 @@ const getLeaderboard = async () => {
             process.env.NODE_ENV === "production"
                 ? "https://heart-to-find.vercel.app/api/leaderboard"
                 : "http://localhost:3000/api/leaderboard",
-            { cache: "no-store" }
+            {
+                cache: "no-store",
+                headers: {
+                    "Cache-Control": "no-cache",
+                },
+            }
         );
         if (!response.ok) {
             throw new Error("Network response was not ok");
