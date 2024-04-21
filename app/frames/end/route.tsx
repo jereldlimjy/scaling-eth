@@ -147,7 +147,7 @@ export const POST = frames(async (ctx: any) => {
                 </div>
             ),
             buttons: [
-                <Button action="tx" target="/txdata/publish" post_url={"/end"}>
+                <Button action="tx" target="/txdata/publish" post_url="/end">
                     Publish to Leaderboard
                 </Button>,
                 <Button action="post" target="/game">

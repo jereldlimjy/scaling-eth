@@ -24,7 +24,7 @@ export async function POST(
     const score = stateObj.score;
     const fid = frameMessage.requesterFid;
     const username = (frameMessage.requesterUserData as any).username;
-    const userAddress = frameMessage.requesterVerifiedAddresses[0];
+    const userAddress = frameMessage.connectedAddress;
 
     // update score
     const calldata = encodeFunctionData({
@@ -33,13 +33,13 @@ export async function POST(
         args: [fid, score, username, userAddress],
     });
 
+    // chainId: "eip155:11155111", // Sepolia
+    // chainId: "eip155:100", // Gnosis Chain
+    // chainId: "eip155:11155420", // Optimism Sepolia
+    // chainId: "eip155:8453", // Base Mainnet
+
     return NextResponse.json({
-        attribution: false,
         chainId: "eip155:421614", // Arb Sepolia
-        // chainId: "eip155:11155111", // Sepolia
-        // chainId: "eip155:100", // Gnosis Chain
-        // chainId: "eip155:11155420", // Optimism Sepolia
-        // chainId: "eip155:8453", // Base Mainnet
         method: "eth_sendTransaction",
         params: {
             abi: heartToFindAbi as Abi,
