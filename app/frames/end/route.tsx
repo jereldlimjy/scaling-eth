@@ -32,10 +32,8 @@ export const POST = frames(async (ctx: any) => {
                     action="link"
                     target={
                         process.env.NODE_ENV === "production"
-                            ? "https://heart-to-find.vercel.app/api/leaderboard"
-                            : process.env.NODE_ENV === "development"
-                            ? "https://heart-to-find.vercel.app/api/leaderboard"
-                            : "http://localhost:3000/api/leaderboard"
+                            ? "https://heart-to-find.vercel.app"
+                            : "http://localhost:3000"
                     }
                 >
                     View Leaderboard

@@ -34,8 +34,6 @@ const handleRequest = frames(async (ctx: any) => {
                 target={
                     process.env.NODE_ENV === "production"
                         ? "https://heart-to-find.vercel.app"
-                        : process.env.NODE_ENV === "development"
-                        ? "https://heart-to-find.vercel.app"
                         : "http://localhost:3000"
                 }
             >
