@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { dictionary } from "../../constants";
+import { unstable_noStore as noStore } from "next/cache";
 
 const wordSearch = require("@blex41/word-search");
 
@@ -7,6 +8,7 @@ export async function GET(
     req: NextRequest,
     res: NextResponse<{ message: string }>
 ) {
+    noStore();
     const options = {
         cols: 10,
         rows: 10,
