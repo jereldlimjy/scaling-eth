@@ -14,7 +14,7 @@ export async function GET(
 ) {
     noStore();
     const provider = new ethers.JsonRpcProvider(
-        process.env.SEPOLIA_RPC_ENDPOINT ?? ""
+        process.env.ARB_SEPOLIA_RPC_ENDPOINT ?? ""
     );
 
     const heartToFindContract = new ethers.Contract(
