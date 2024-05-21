@@ -20,6 +20,11 @@ const handleRequest = frames(async (ctx: any) => {
                         HeartToFind
                     </span>
                 </div>
+                <div tw="flex absolute top-130">
+                    <span tw="font-pressStart2P text-xl">
+                        created by @jereld for Scaling Ethereum 2024
+                    </span>
+                </div>
             </div>
         ),
         buttons: [
