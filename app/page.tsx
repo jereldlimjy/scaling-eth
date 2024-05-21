@@ -5,6 +5,7 @@ import { vercelURL } from "./utils";
 import { HeartSvg } from "./components/HeartSvgWeb";
 import HeartBitDataWrapper from "./components/HeartBitDataWrapper";
 import { pressStart2P } from "./fonts";
+import { Analytics } from "@vercel/analytics/react";
 
 export async function generateMetadata(): Promise<Metadata> {
     return {
@@ -48,6 +49,8 @@ export default async function Home({ searchParams }: NextServerPageProps) {
 
     return (
         <div className="flex flex-col h-full w-full items-center bg-yellow-300">
+            <Analytics />
+
             {/* Title */}
             <div>
                 <div className="relative z-0">
